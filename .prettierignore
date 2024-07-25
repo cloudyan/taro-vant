@@ -1,2 +1,14 @@
-/dist
-*.yaml
+build
+coverage
+dist
+es
+lib
+node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+*.min.js
+*.min.css
+
+iconfont-test.js
+svg-sprite.js

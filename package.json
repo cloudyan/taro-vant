@@ -1,75 +1,200 @@
 {
   "name": "taro-vant",
   "version": "0.0.1",
-  "description": "Taro 版本的 vant 组件库",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
-    "build": "father build",
-    "build:watch": "father dev",
-    "docs:build": "dumi build",
-    "docs:preview": "dumi preview",
-    "prepare": "husky install && dumi setup",
-    "doctor": "father doctor",
-    "lint": "npm run lint:es && npm run lint:css",
-    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
-    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "prepublishOnly": "father doctor && npm run build"
+  "homepage": "https://github.com/ant-design/ant-design-mobile#readme",
+  "bugs": {
+    "url": "https://github.com/ant-design/ant-design-mobile/issues"
   },
-  "authors": [
-    "1395093509@qq.com"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ant-design/ant-design-mobile.git",
+    "branch": "master",
+    "platform": "github"
+  },
   "license": "MIT",
-  "files": [
-    "dist"
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "./es/index.js",
+    "./src/index.ts",
+    "./es/global/index.js",
+    "./src/global/index.ts"
   ],
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+  "main": "./cjs/index.js",
+  "unpkg": "./umd/antd-mobile.js",
+  "module": "./es/index.js",
+  "types": "./es/index.d.ts",
+  "typings": "./es/index.d.ts",
+  "files": [
+    "./lib"
+  ],
+  "scripts": {
+    "build": "gulp",
+    "build-doc": "dumi build && echo '!.*' > dist/.surgeignore",
+    "eslint": "eslint ./src",
+    "eslint:fix": "eslint --fix ./src",
+    "prettier": "prettier --check ./src",
+    "prettier:fix": "prettier --write ./src",
+    "stylelint": "stylelint \"**/*.{css,less,scss}\"",
+    "stylelint:fix": "stylelint --fix \"**/*.{css,less,scss}\"",
+    "biome:ci": "biome ci ./src",
+    "biome:check": "biome format ./src",
+    "biome:format": "biome format --write ./src",
+    "oxlint": "oxlint -c ./.eslintrc.json ./src",
+    "compat-check": "eslint --no-eslintrc --ext .js main.js",
+    "postinstall": "husky install",
+    "lint": "eslint . && stylelint \"**/*.{css,less,scss}\"",
+    "lint:fix": "prettier --write . && eslint --fix . && stylelint --fix \"**/*.{css,less,scss}\"",
+    "package-diff": "antd-tools run package-diff --path=./lib",
+    "prepare": "husky install",
+    "pub": "npm run package-diff && npm publish ./lib",
+    "pub:alpha": "npm publish ./lib --tag alpha",
+    "pub:dev": "npm publish ./lib --tag dev",
+    "size-limit": "size-limit",
+    "size-limit:ci": "size-limit --json",
+    "dev": "dumi dev",
+    "test": "jest",
+    "test-with-coverage": "jest --coverage"
   },
-  "lint-staged": {
-    "*.{md,json}": [
-      "prettier --write --no-error-on-unmatched-pattern"
-    ],
-    "*.{css,less}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --parser=typescript --write"
-    ]
+  "resolutions": {
+    "@types/react": "18",
+    "@types/react-dom": "18"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+  "dependencies": {
+    "@floating-ui/dom": "^1.5.3",
+    "@rc-component/mini-decimal": "^1.1.0",
+    "@react-spring/web": "~9.6.1",
+    "@use-gesture/react": "10.3.0",
+    "ahooks": "^3.7.8",
+    "antd-mobile": "^5.37.1",
+    "antd-mobile-icons": "^0.3.0",
+    "antd-mobile-v5-count": "^1.0.1",
+    "classnames": "^2.3.2",
+    "dayjs": "^1.11.9",
+    "deepmerge": "^4.3.1",
+    "nano-memoize": "^3.0.16",
+    "rc-field-form": "~1.27.4",
+    "rc-util": "^5.38.1",
+    "react-fast-compare": "^3.2.2",
+    "react-is": "^18.2.0",
+    "runes2": "^1.1.2",
+    "staged-components": "^1.1.3",
+    "tslib": "^2.6.2",
+    "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@umijs/lint": "^4.0.0",
-    "dumi": "^2.3.0",
-    "eslint": "^8.23.0",
-    "father": "^4.1.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "prettier-plugin-organize-imports": "^3.0.0",
-    "prettier-plugin-packagejson": "^2.2.18",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "stylelint": "^14.9.1"
-  }
+    "@ant-design/icons": "^4.8.1",
+    "@ant-design/tools": "16.0.0-alpha.3",
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.20",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.15",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.22.15",
+    "@biomejs/biome": "^1.7.1",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^17.8.1",
+    "@docsearch/react": "^3.5.2",
+    "@jest/types": "^28.1.3",
+    "@react-spring/core": "~9.6.1",
+    "@size-limit/preset-big-lib": "^11.1.0",
+    "@statoscope/webpack-plugin": "^5.27.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "14.2.1",
+    "@types/big.js": "^6.2.0",
+    "@types/jest": "^28.1.8",
+    "@types/jest-axe": "3.5.4",
+    "@types/lodash": "^4.14.198",
+    "@types/node": "^18.17.17",
+    "@types/react": "^18.2.22",
+    "@types/react-beautiful-dnd": "^13.1.4",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-helmet": "^6.1.6",
+    "@types/react-is": "^17.0.4",
+    "@types/react-virtualized": "^9.21.22",
+    "@types/resize-observer-browser": "^0.1.7",
+    "@types/testing-library__jest-dom": "^5.14.9",
+    "@types/use-sync-external-store": "^0.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@umijs/types": "^3.5.41",
+    "@use-gesture/core": "10.2.20",
+    "antd": "^4.24.14",
+    "autoprefixer": "^9.8.8",
+    "babel-loader": "^8.3.0",
+    "css-loader": "^6.8.1",
+    "del": "^6.1.1",
+    "dumi": "^1.1.53",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-builtin-compat": "^0.0.2",
+    "eslint-plugin-compat": "^4.2.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-less": "^5.0.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-typescript": "6.0.0-alpha.1",
+    "husky": "^8.0.3",
+    "jest": "^28.1.3",
+    "jest-axe": "^6.0.1",
+    "jest-canvas-mock": "^2.5.2",
+    "jest-environment-jsdom": "^28.1.3",
+    "jest-watch-typeahead": "^1.1.0",
+    "less": "^4.1.3",
+    "lint-staged": "^15.2.2",
+    "lodash": "^4.17.21",
+    "lorem-ipsum": "^2.0.8",
+    "lz-string": "^1.5.0",
+    "mockdate": "^3.0.5",
+    "oxlint": "^0.2.18",
+    "postcss": "^8.4.38",
+    "postcss-px-multiple": "^0.1.5",
+    "postcss-pxtorem": "^6.1.0",
+    "prettier": "^3.2.5",
+    "prism-react-renderer": "^1.3.5",
+    "prismjs": "^1.29.0",
+    "qrcode.react": "^3.1.0",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-lottie": "^1.2.3",
+    "react-test-renderer": "^18.2.0",
+    "react-virtualized": "^9.22.5",
+    "size-limit": "^11.1.2",
+    "style-loader": "^3.3.4",
+    "stylelint": "^16.5.0",
+    "stylelint-config-ali": "^2.1.1",
+    "stylelint-prettier": "^5.0.0",
+    "through2": "^4.0.2",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.6.4",
+    "vite": "^5.0.13",
+    "webpack": "^5.91.0",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-stream": "^7.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "GravityCDN": "./umd/antd-mobile.js",
+  "size-limit": [
+    {
+      "path": "./lib/bundle/antd-mobile.es.js",
+      "limit": "200 kB"
+    }
+  ]
 }

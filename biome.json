@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "organizeImports": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": false
+  },
+  "formatter": {
+    "ignore": [
+      "**/.umi/*"
+    ],
+    "enabled": true,
+    "indentWidth": 2,
+    "indentStyle": "space",
+    "lineWidth": 80
+  },
+  "javascript": {
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    },
+    "globals": [
+      "$",
+      "_"
+    ],
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "trailingCommas": "es5",
+      "quoteProperties": "asNeeded",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "asNeeded"
+    }
+  }
+}

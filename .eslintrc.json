@@ -1,0 +1,175 @@
+{
+<<<<<<< HEAD
+||||||| parent of 60c3b4c08 (feat: update eslint import)
+  "ignorePatterns": [
+    "/*",
+    "!/src",
+    "/src/**/*.js"
+  ],
+=======
+  "ignorePatterns": ["/*", "!/src", "/src/**/*.js"],
+>>>>>>> 60c3b4c08 (feat: update eslint import)
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "/*",
+    "!/src",
+    "/src/**/*.js"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/demos/**/*"
+      ],
+      "rules": {
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    },
+    {
+      "files": [
+        "**/tests/**/*"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ],
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": "off",
+<<<<<<< HEAD
+||||||| parent of 60c3b4c08 (feat: update eslint import)
+    "react/display-name": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "simple-import-sort/exports": "error",
+=======
+    "react/display-name": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+>>>>>>> 60c3b4c08 (feat: update eslint import)
+    "no-case-declarations": "off",
+    "no-constant-condition": [
+      "error",
+      {
+        "checkLoops": false
+      }
+    ],
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "no-inner-declarations": "off",
+    "no-prototype-builtins": "off",
+    "react/display-name": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "simple-import-sort/exports": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+<<<<<<< HEAD
+  }
+||||||| parent of 60c3b4c08 (feat: update eslint import)
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/demos/**/*"
+      ],
+      "rules": {
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    },
+    {
+      "files": [
+        "**/tests/**/*"
+      ],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    }
+  ]
+=======
+  },
+  "overrides": [
+    {
+      "files": ["**/demos/**/*"],
+      "rules": {
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    },
+    {
+      "files": ["**/tests/**/*"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    }
+  ]
+>>>>>>> 60c3b4c08 (feat: update eslint import)
+}

@@ -1,0 +1,217 @@
+@import './theme-default.less';
+@import './theme-dark.less';
+
+:root {
+  // 处理 iOS 上点击按钮时，不会出现周围的透明灰色
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+  background-color: var(--adm-color-background-body);
+}
+
+body {
+  color: var(--adm-color-text);
+  font-size: var(--adm-font-size-main);
+  font-family: var(--adm-font-family);
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--adm-color-primary);
+  transition: opacity ease-in-out 0.2s;
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.adm-plain-anchor {
+  color: unset;
+  transition: none;
+  &:active {
+    opacity: unset;
+  }
+}
+
+body.adm-overflow-hidden {
+  overflow: hidden !important;
+}
+
+div.adm-px-tester {
+  --size: 1;
+  height: calc(var(--size) / 2 * 2px);
+  width: 0;
+  position: fixed;
+  left: -100vw;
+  top: -100vh;
+  user-select: none;
+  pointer-events: none;
+}
+
+// built-in 内置样式
+
+// 优化点击区域
+.human {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+  }
+}
+
+// 超出省略
+.max-line-2,
+.max-line-3 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-break: break-all;
+  // line-height: 1.4;
+}
+/* 必须自己设定 max-height 并指定单位，不同字体大小高度不同，这里无法计算 max-height */
+.max-line-2 {
+  -webkit-line-clamp: 2;
+}
+.max-line-3 {
+  -webkit-line-clamp: 3;
+}
+
+.ellipsis,
+.max-line-1 {
+  text-overflow: ellipsis;
+
+  /* Needed to make it work */
+  overflow: hidden;
+  white-space: nowrap;
+  /* 兼容低版本浏览器 */
+  max-width: 100%;
+}
+
+// 推荐以采用 antd-mobile 的高清方案
+// 0.5px 细线
+[class*='adm-hairline']::after {
+  content: ' ';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: scale(0.5);
+  transform-origin: right bottom;
+  box-sizing: border-box;
+  pointer-events: none;
+  border: 0 solid #ebedf0;
+  /* border: 1px solid rgba(0,0,0,.2); */
+}
+
+.adm-hairline {
+  &,
+  &--top,
+  &--left,
+  &--right,
+  &--bottom,
+  &--border,
+  &--surround,
+  &--top-bottom {
+    position: relative;
+  }
+  &--top::after {
+    border-top-width: 1px;
+  }
+  &--left::after {
+    border-left-width: 1px;
+  }
+  &--right::after {
+    border-right-width: 1px;
+  }
+  &--bottom::after {
+    border-bottom-width: 1px;
+  }
+  &--top-bottom::after,
+  &-unset--top-bottom::after {
+    border-width: 1px 0;
+  }
+  &--border::after,
+  &--surround::after {
+    border-width: 1px;
+  }
+}
+
+// 字体辅助
+.f10 {
+  font-size: 12px;
+  transform: scale(0.8333);
+}
+
+// Flex 布局辅助样式
+.adm-flex {
+  display: flex;
+
+  &--inline {
+    display: inline-flex;
+  }
+  &--block,
+  &--fill {
+    display: flex;
+  }
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--align {
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+    &-baseline {
+      align-items: baseline;
+    }
+  }
+
+  &--justify {
+    &-center {
+      justify-content: center;
+    }
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+    &-evenly {
+      justify-content: space-evenly;
+    }
+    &-stretch {
+      justify-content: stretch;
+    }
+  }
+}

@@ -1,19 +1,21 @@
 module.exports = {
-  pluginSearchDirs: false,
-  plugins: [
-    require.resolve('prettier-plugin-organize-imports'),
-    require.resolve('prettier-plugin-packagejson'),
-  ],
-  printWidth: 80,
-  proseWrap: 'never',
+  semi: false,
+  trailingComma: 'es5',
+  tabWidth: 2,
   singleQuote: true,
-  trailingComma: 'all',
+  bracketSameLine: false,
+  jsxSingleQuote: true,
+  quoteProps: 'preserve',
+  arrowParens: 'avoid',
+  // 因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行
+  proseWrap: 'never',
   overrides: [
     {
-      files: '*.md',
+      files: ['*.md'],
       options: {
-        proseWrap: 'preserve',
+        // 是否格式化一些文件中被嵌入的代码片段的风格，如果插件可以识别。
+        embeddedLanguageFormatting: 'off',
       },
     },
   ],
-};
+}
