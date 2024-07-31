@@ -22,7 +22,7 @@ function copyComponent() {
         fs.copySync(`${fileItem}/demos`, componentTargerDir);
         fs.ensureFileSync(`${componentTargerDir}/index.config.ts`);
 
-        h5PagesList.push(`pages/${componentName}/demos/demo1`);
+        h5PagesList.push(`pages/${componentName}/demos/index`);
       } catch (err) {
         console.error(err);
       }
