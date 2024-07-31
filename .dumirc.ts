@@ -4,5 +4,8 @@ export default defineConfig({
   outputPath: 'docs-dist',
   themeConfig: {
     name: 'taro-vant',
+    themeConfig: {
+      hd: {},
+    },
   },
 });
