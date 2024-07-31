@@ -17,12 +17,12 @@ function copyComponent() {
         fs.ensureDirSync(`${rootPath}/taro-device/src`);
 
         /** 组件目录移动 */
-        const componentTargerDir = `${rootPath}/taro-device/src/pages/${componentName}`;
+        const componentTargerDir = `${rootPath}/taro-device/src/pages/${componentName}/demos`;
         fs.ensureDirSync(componentTargerDir);
-        fs.copySync(fileItem, componentTargerDir);
-        fs.ensureFileSync(`${componentTargerDir}/demo/index.config.ts`);
+        fs.copySync(`${fileItem}/demos`, componentTargerDir);
+        fs.ensureFileSync(`${componentTargerDir}/index.config.ts`);
 
-        h5PagesList.push(`pages/${componentName}/demo/index`);
+        h5PagesList.push(`pages/${componentName}/demos/demo1`);
       } catch (err) {
         console.error(err);
       }

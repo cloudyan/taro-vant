@@ -2,12 +2,8 @@
 
 ## 使用场景
 
-## 代码演示
+## 示例
 
-```jsx
-import { Bar } from 'taro-vant';
-
-export default () => <Bar>BarButton</Bar>;
-```
+<code src="./demos/demo1.tsx"></code>
 
 ## API

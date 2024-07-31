@@ -2,8 +2,10 @@
 
 This is an example component.
 
-```jsx
-import { Foo } from 'taro-vant';
+## 使用场景
 
-export default () => <Foo title="Hello dumi!" />;
-```
+## 示例
+
+<code src="./demos/demo1.tsx"></code>
+
+## API

@@ -1,12 +1,11 @@
 import { Button } from '@tarojs/components';
-import type { FC, ReactNode } from 'react';
 import React from 'react';
 
 interface BarProps {
-  children?: ReactNode;
+  children?: React.ReactNode;
 }
 
-const Bar: FC = (props: BarProps) => {
+const Bar: React.FC = (props: BarProps) => {
   return (
     <>
       <Button className="btn-bar">{props.children}</Button>
