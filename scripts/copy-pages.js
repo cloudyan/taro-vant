@@ -12,17 +12,33 @@ function copyComponent() {
     const strList = fileItem.split('/');
     const componentName = strList[strList.length - 1];
     if (componentName !== 'index.ts') {
-      console.log('componentName', componentName, fileItem);
+      // console.log('componentName', componentName, fileItem);
       try {
         fs.ensureDirSync(`${rootPath}/taro-device/src`);
 
         /** 组件目录移动 */
-        const componentTargerDir = `${rootPath}/taro-device/src/pages/${componentName}/demos`;
+        // '/~demos/foo-demo-demo1?locale=zh-CN'
+        // `/~demos/${componentName}-demo-demo1`
+        const componentTargerDir = `${rootPath}/taro-device/src/~demos/`;
         fs.ensureDirSync(componentTargerDir);
-        fs.copySync(`${fileItem}/demos`, componentTargerDir);
+
+        // copyFile demo1.tsx ==> foo-demo-demo1
+        // 源文件路径
+        const sourceFile = path.join(fileItem, 'demos', 'demo1.tsx');
+        // 目标文件路径
+        const targetFileName = `${componentName}-demo-demo1`;
+        const targetFile = path.join(
+          componentTargerDir,
+          `${targetFileName}.tsx`,
+        );
+        // 复制并重命名文件
+        console.log('copy:', sourceFile, targetFile);
+        fs.copyFileSync(sourceFile, targetFile);
+
+        // fs.copySync(`${fileItem}/demos`, componentTargerDir);
         fs.ensureFileSync(`${componentTargerDir}/index.config.ts`);
 
-        h5PagesList.push(`pages/${componentName}/demos/index`);
+        h5PagesList.push(`~demos/${targetFileName}`);
       } catch (err) {
         console.error(err);
       }

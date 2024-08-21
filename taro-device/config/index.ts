@@ -4,10 +4,7 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import devConfig from './dev';
 import prodConfig from './prod';
 
-console.log(
-  '__dirname2',
-  path.resolve(__dirname, '../../../packages/taro-vant/src'),
-);
+console.log('taro-vant', path.resolve(__dirname, '../../src'));
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
@@ -62,6 +59,9 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
       output: {
         filename: 'js/[name].[hash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].js',
+      },
+      compile: {
+        include: [path.resolve(__dirname, '../../src')],
       },
       miniCssExtractPluginOption: {
         ignoreOrder: true,

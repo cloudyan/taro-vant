@@ -8,6 +8,7 @@ const MobilePreviewer: FC<IPreviewerProps> = (props) => {
   const {
     frontmatter: { mobile = true },
   } = useRouteMeta();
+
   const { themeConfig } = useSiteData();
   const locale = useLocale();
   const generateUrl = useCallback((p: typeof props) => {
@@ -21,8 +22,14 @@ const MobilePreviewer: FC<IPreviewerProps> = (props) => {
     console.log('p', p);
     console.log('pathname', pathname, params);
 
+    // demoUrl: "/~demos/foo-demo-demo1"
     // const componentName = pathname.split('/').pop();
-    // return `http://172.16.0.74:10086?${params.toString()}#/pages/${pathname}/demo/index`.replace(/\?$/, '');
+    // '/~demos/foo-demo-demo1?locale=zh-CN'
+    return `http://127.0.0.1:10086#${pathname}?${params.toString()}`.replace(
+      /\?$/,
+      '',
+    );
+    // return `http://127.0.0.1:10086?#/pages/${pathname}/demos/demo1`.replace(/\?$/, '');
 
     return `${pathname}?${params.toString()}`.replace(/\?$/, '');
   }, []);

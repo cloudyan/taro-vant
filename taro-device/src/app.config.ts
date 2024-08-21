@@ -1,4 +1,4 @@
-const pageList = ['pages/foo/demos/demo1', 'pages/bar/demos/demo1'];
+const pageList = ['~demos/foo-demo-demo1', '~demos/bar-demo-demo1'];
 
 export default {
   pages: pageList,

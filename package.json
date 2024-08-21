@@ -11,6 +11,7 @@
   "scripts": {
     "build": "father build",
     "build:watch": "father dev",
+    "copy": "node ./scripts/copy-pages.js",
     "demo": "cd taro-device && npm run dev:h5",
     "dev": "dumi dev",
     "docs:build": "dumi build",
