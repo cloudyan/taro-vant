@@ -7,7 +7,13 @@ Taro 版本的 vant 组件库
 
 ## Usage
 
-TODO
+```js
+import { Button } from 'taro-vant';
+
+export default () => {
+  return <Button>Button</Button>;
+};
+```
 
 ## Options
 
@@ -36,6 +42,14 @@ $ pnpm run docs:preview
 
 # check your project for potential problems
 $ pnpm run doctor
+```
+
+## 项目结构
+
+```bash
+- taro-vant
+  - docs
+  - taro-device
 ```
 
 ## LICENSE

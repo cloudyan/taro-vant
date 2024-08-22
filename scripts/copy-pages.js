@@ -38,6 +38,7 @@ function copyComponent() {
         // fs.copySync(`${fileItem}/demos`, componentTargerDir);
         fs.ensureFileSync(`${componentTargerDir}/index.config.ts`);
 
+        // h5PagesList.push(`pages/${componentName}/demo/index`);
         h5PagesList.push(`~demos/${targetFileName}`);
       } catch (err) {
         console.error(err);
@@ -45,7 +46,7 @@ function copyComponent() {
     }
   });
 
-  /** app.config.ts文件修改 */
+  /** app.config.ts 文件修改 */
   fs.ensureFileSync(`${rootPath}/taro-device/src/app.config.ts`);
 
   const targetStr = `const pageList = [
