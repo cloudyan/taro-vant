@@ -1,9 +1,15 @@
 import { IPreviewerProps, useLocale, useRouteMeta, useSiteData } from 'dumi';
 import Previewer from 'dumi/theme-default/builtins/Previewer';
+// @ts-ignore
 import Device from 'dumi/theme/slots/Device';
 import React, { useCallback, useEffect, useState, type FC } from 'react';
 import './index.less';
 
+// Previewer
+// https://github.com/umijs/dumi/blob/0c33c6f2b2c1b0ff40beedb4a842140d06af711c/suites/theme-mobile/src/builtins/Previewer/index.tsx#L30
+// useLiveDemo
+// https://github.com/umijs/dumi/blob/0c33c6f2b2c1b0ff40beedb4a842140d06af711c/src/client/theme-api/useLiveDemo.ts#L35
+// https://github.com/umijs/dumi/blob/0c33c6f2b2c1b0ff40beedb4a842140d06af711c/src/client/theme-default/builtins/Previewer/index.tsx#L3
 const MobilePreviewer: FC<IPreviewerProps> = (props) => {
   const {
     frontmatter: { mobile = true },
@@ -25,10 +31,11 @@ const MobilePreviewer: FC<IPreviewerProps> = (props) => {
     // demoUrl: "/~demos/foo-demo-demo1"
     // const componentName = pathname.split('/').pop();
     // '/~demos/foo-demo-demo1?locale=zh-CN'
-    return `http://127.0.0.1:10086#${pathname}?${params.toString()}`.replace(
-      /\?$/,
-      '',
-    );
+    const iframeUrl = `http://127.0.0.1:10086#${pathname}?${params.toString()}`
+      .replace(/\?$/, '')
+      // 修复路径错误
+      .replace('/src-', '/');
+    return iframeUrl;
     // return `http://127.0.0.1:10086?#/pages/${pathname}/demos/demo1`.replace(/\?$/, '');
 
     return `${pathname}?${params.toString()}`.replace(/\?$/, '');
